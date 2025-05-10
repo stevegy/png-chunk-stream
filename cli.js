@@ -19,16 +19,24 @@ if(method === 'encode') {
     .pipe(encoder)
     .pipe(process.stdout)
 } else if(method === 'decode'){
-  process.stdin
-    .pipe(decoder)
-    .pipe(through.obj(function (chunk, enc, cb) {
-      chunk.data = chunk.data.toString('base64')
-      chunk.crc = chunk.crc.toString('base64')
-      this.push(chunk)
-      cb()
-    }))
-    .pipe(ndjson.stringify())
-    .pipe(process.stdout)
+  try {
+    process.stdin
+      .pipe(decoder)
+      .on('error', err => {
+        console.error(err)
+        process.exit(1)
+      })
+      .pipe(through.obj(function (chunk, enc, cb) {
+        chunk.data = chunk.data.toString('base64')
+        chunk.crc = chunk.crc.toString('base64')
+        this.push(chunk)
+        cb()
+      }))
+      .pipe(ndjson.stringify())
+      .pipe(process.stdout)
+  } catch (e) {
+    console.error(e)
+  }
 } else {
   console.error('Usage: png-chunk [encode/decode]')
 }
