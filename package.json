@@ -1,7 +1,7 @@
 {
-  "name": "png-chunk-stream",
-  "version": "1.1.1",
-  "description": "Decode and Encode PNG chunks",
+  "name": "png-chunk-streamer",
+  "version": "1.1.2",
+  "description": "Decode and Encode PNG chunks - originally from png-chunk-stream",
   "main": "index.js",
   "bin": {
     "png-chunk": "./cli.js"
@@ -20,16 +20,24 @@
   },
   "keywords": [
     "png",
-    "chunk"
+    "chunk",
+    "stream",
+    "decode-encode"
   ],
   "author": "Finn Pauls",
+  "maintainers": [
+    {
+      "name": "SteveGY",
+      "url": "https://github.com/stevegy/png-chunk-stream/"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/finnp/png-chunk-stream.git"
+    "url": "https://github.com/stevegy/png-chunk-stream.git"
   },
   "bugs": {
-    "url": "https://github.com/finnp/png-chunk-stream/issues"
+    "url": "https://github.com/stevegy/png-chunk-stream/issues"
   },
-  "homepage": "https://github.com/finnp/png-chunk-stream"
+  "homepage": "https://github.com/stevegy/png-chunk-stream"
 }

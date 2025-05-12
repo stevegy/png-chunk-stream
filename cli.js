@@ -1,18 +1,18 @@
 #!/usr/bin/env node
 
-var decoder = require('./').decode()
-var encoder = require('./').encode()
-var through = require('through2')
-var ndjson = require('ndjson')
+const decoder = require('./').decode()
+const encoder = require('./').encode()
+const through = require('through2')
+const ndjson = require('ndjson')
 
-var method = process.argv[2]
+const method = process.argv[2]
 
 if(method === 'encode') {
   process.stdin
     .pipe(ndjson.parse())
     .pipe(through.obj(function (chunk, enc, cb) {
-      chunk.data = new Buffer(chunk.data, 'base64')
-      chunk.crc = new Buffer(chunk.crc, 'base64')
+      chunk.data = new Buffer.from(chunk.data, 'base64')
+      chunk.crc = new Buffer.from(chunk.crc, 'base64')
       this.push(chunk)
       cb()
     }))
@@ -23,7 +23,7 @@ if(method === 'encode') {
     process.stdin
       .pipe(decoder)
       .on('error', err => {
-        console.error(err)
+        console.error(`decode error:`, err)
         process.exit(1)
       })
       .pipe(through.obj(function (chunk, enc, cb) {
@@ -35,7 +35,7 @@ if(method === 'encode') {
       .pipe(ndjson.stringify())
       .pipe(process.stdout)
   } catch (e) {
-    console.error(e)
+    console.error(`Catch error:`, e)
   }
 } else {
   console.error('Usage: png-chunk [encode/decode]')
