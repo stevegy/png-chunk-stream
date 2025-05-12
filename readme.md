@@ -1,7 +1,14 @@
-# png-chunk-stream
-Windows | Mac/Linux
-------- | ---------
-[![Windows Build status](http://img.shields.io/appveyor/ci/finnp/png-chunk-stream.svg)](https://ci.appveyor.com/project/finnp/png-chunk-stream/branch/master) | [![Build Status](https://travis-ci.org/finnp/png-chunk-stream.svg?branch=master)](https://travis-ci.org/finnp/png-chunk-stream)
+# png-chunk-streamer - originally png-chunk-stream by finnp
+
+This is a bug fix for the png-chunk-stream. It seems the origin lib is not maintained.
+
+This is a dependent lib for the png-itxt.
+
+The original lib is at https://github.com/finnp/png-chunk-stream
+
+Under this line is the original README.md.
+
+-------
 
 A small simple helper for working with PNG files, inspired by [chunky-stream](https://www.npmjs.org/package/chunky-rice). 
 It is supposed to be lightweight and usable with browserify.
