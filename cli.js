@@ -11,8 +11,8 @@ if(method === 'encode') {
   process.stdin
     .pipe(ndjson.parse())
     .pipe(through.obj(function (chunk, enc, cb) {
-      chunk.data = new Buffer(chunk.data, 'base64')
-      chunk.crc = new Buffer(chunk.crc, 'base64')
+      chunk.data = new Buffer.from(chunk.data, 'base64')
+      chunk.crc = new Buffer.from(chunk.crc, 'base64')
       this.push(chunk)
       cb()
     }))
